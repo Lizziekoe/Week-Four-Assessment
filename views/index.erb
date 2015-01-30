@@ -1,0 +1,10 @@
+<h2>Band Managing is Cool</h2>
+<h3>Add a Venue</h3>
+<form action="/venues" method="post">
+  <input type="text" name="venue">
+  <button type="submit">Add</button>
+</form>
+
+<% @venues.each do |venue| %>
+<%= venue.name %>
+<% end %>
