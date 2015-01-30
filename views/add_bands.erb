@@ -2,7 +2,8 @@
 <form action="/bands" method="post">
   <input type="text" name="band">
   <button type="submit">Add</button>
-</form>
+</form><br>
+<h3>Click on a Band to Edit it! </h3>
 
 <% @bands.each do |band| %>
 <a href="/bands/<%= band.id%>"><%= band.name %></a> <br>

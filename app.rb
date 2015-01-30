@@ -24,6 +24,12 @@ end
 post('/bands') do
   @bands = Band.all
   band_name = params.fetch("band")
-  band = Band.create(:name => band_name)
+  band = Band.create({:name => band_name})
   erb(:add_bands)
+end
+
+get('/bands/:id') do
+  @bands = Band.all
+  @band = Band.find(params.fetch("id").to_i)
+  erb(:edit_bands)
 end
