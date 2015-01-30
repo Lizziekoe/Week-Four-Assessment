@@ -3,7 +3,9 @@
 <form action="/venues" method="post">
   <input type="text" name="venue">
   <button type="submit">Add</button>
-</form>
+</form><br>
+
+<h5>Click on a Venue to Add Bands That Will Play There</h5>
 
 <% @venues.each do |venue| %>
 <a href="/venues/<%= venue.id%>"><%= venue.name %></a> <br>

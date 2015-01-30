@@ -33,3 +33,16 @@ get('/bands/:id') do
   @band = Band.find(params.fetch("id").to_i)
   erb(:edit_bands)
 end
+
+patch('/band/:id/edit') do
+  @band = Band.find(params.fetch("id").to_i)
+  name = params.fetch("name")
+  @band.update({name: name})
+  redirect('/')
+end
+
+delete('/band/:id/delete') do
+  @band = Band.find(params.fetch("id").to_i)
+  @band.destroy
+  redirect('/')
+end

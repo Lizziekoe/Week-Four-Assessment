@@ -3,4 +3,14 @@
 
  CHECK BOXES WILL GO HERE
 
- ALONG WITH PATCH AND DELETE METHODS 
+ <form action="/band/<%= @band.id %>/edit" method="post">
+   <input type="hidden" name="_method" value="patch">
+   <label for="name">Edit This Band's Name</label><br>
+   <input type="text" name="name"><br><br>
+   <button type="submit">Update and Return Home</button>
+ </form><br>
+
+  <form action="/band/<%= @band.id %>/delete" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <button type="submit">Delete Band and Return Home</button>
+  </form>
