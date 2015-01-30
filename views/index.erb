@@ -6,5 +6,5 @@
 </form>
 
 <% @venues.each do |venue| %>
-<%= venue.name %>
+<a href="/venues/<%= venue.id%>"><%= venue.name %></a> <br>
 <% end %>
