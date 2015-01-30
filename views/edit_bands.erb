@@ -7,7 +7,8 @@
 
   <h2>Venue Not Listed? Choose From the Following:</h2>
 
-  <form action="/which_venue" method="post">
+  <form action="/which_venue/<%= @band.id %>" method="post">
+    <input type="hidden" name="_method" value="patch">
     <% @venues.each() do |venue| %>
       <div class = "checkbox">
         <label>
@@ -16,7 +17,8 @@
       </div>
     <% end %>
     <button type="submit">Add Venues</button><br><br>
-  </form>
+  </form><br>
+
 
  <form action="/band/<%= @band.id %>/edit" method="post">
    <input type="hidden" name="_method" value="patch">

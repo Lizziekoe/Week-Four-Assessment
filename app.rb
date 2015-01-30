@@ -49,13 +49,11 @@ delete('/band/:id/delete') do
   redirect('/')
 end
 
-post('/which_venue') do
-  @venues = Venue.all
+patch('/which_venue/:id') do
+  venue_id = params.fetch("id").to_i()
+  @venue_one = Venue.find(venue_id)
   venue_ids = params.fetch("venue_ids")
-  new_array = []
-  venue_ids.each() do |id|
-    new_array.push(id.to_i())
-  end
-  band = Band.create({:venue_ids => new_array})
-  redirect('/')
+  @venue_one.update({:venue_ids => venue_ids})
+  @bands = Band.all()
+  erb(:edit_bands)
 end
