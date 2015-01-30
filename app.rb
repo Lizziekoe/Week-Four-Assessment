@@ -5,6 +5,7 @@ Dir[File.dirname(__FILE__) + '/lib/*.rb'].each { |file| require file }
 
 get('/') do
   @venues = Venue.all
+  @bands = Band.all
   erb(:index)
 end
 
@@ -49,11 +50,12 @@ delete('/band/:id/delete') do
   redirect('/')
 end
 
-patch('/which_venue/:id') do
-  venue_id = params.fetch("id").to_i()
-  @venue_one = Venue.find(venue_id)
+patch('/which_venues/:id') do
+  @venues = Venue.all
+  band_id = params.fetch("id").to_i()
+  @band = Band.find(band_id)
   venue_ids = params.fetch("venue_ids")
-  @venue_one.update({:venue_ids => venue_ids})
+  @band.update({:venue_ids => venue_ids})
   @bands = Band.all()
   erb(:edit_bands)
 end
