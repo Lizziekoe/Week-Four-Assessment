@@ -22,6 +22,7 @@ get('/venues/:id') do
 end
 
 post('/bands') do
+  @venue = Venue.all
   @bands = Band.all
   band_name = params.fetch("band")
   band = Band.create({:name => band_name})
@@ -29,6 +30,7 @@ post('/bands') do
 end
 
 get('/bands/:id') do
+  @venues = Venue.all
   @bands = Band.all
   @band = Band.find(params.fetch("id").to_i)
   erb(:edit_bands)
@@ -44,5 +46,16 @@ end
 delete('/band/:id/delete') do
   @band = Band.find(params.fetch("id").to_i)
   @band.destroy
+  redirect('/')
+end
+
+post('/which_venue') do
+  @venues = Venue.all
+  venue_ids = params.fetch("venue_ids")
+  new_array = []
+  venue_ids.each() do |id|
+    new_array.push(id.to_i())
+  end
+  band = Band.create({:venue_ids => new_array})
   redirect('/')
 end
